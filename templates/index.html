@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lead Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Lead Dashboard</h1>
+        <form action="/upload" method="POST" enctype="multipart/form-data" class="my-4">
+            <input type="file" name="file" class="form-control mb-2" required>
+            <button type="submit" class="btn btn-primary">Upload File</button>
+        </form>
+
+        <h3>Leads List</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Job</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for lead in leads %}
+                <tr>
+                    <td>{{ lead['id'] }}</td>
+                    <td>{{ lead['name'] }}</td>
+                    <td>{{ lead['email'] }}</td>
+                    <td>{{ lead['phone'] }}</td>
+                    <td>{{ lead['job'] }}</td>
+                    <td>{{ lead['notes'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
